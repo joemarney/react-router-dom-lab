@@ -14,7 +14,7 @@ export default function LetterForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.addBox(formData);
+    props.addLetter(formData);
     setFormData(initState);
     navigate("/mailboxes");
   };
@@ -27,14 +27,17 @@ export default function LetterForm(props) {
     <>
       <h1>New Letter</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="mailboxId">Select a Mailbox</label>
-        <select onChange={handleChange}>
+        <label htmlFor="mailboxId">Select a Mailbox:</label>
+        <select onChange={handleChange} name="mailboxId" id="mailboxId">
           <option></option>
+          {props.mailboxes.map((mailbox) => {
+            return <option key={mailbox._id}>{mailbox._id}</option>;
+          })}
         </select>
-        <label htmlFor="recipient">Recipient</label>
-        <input type="text" name="recipient" placeholder="Recipient's name" onChange={handleChange}></input>
-        <label htmlFor="message">Message</label>
-        <textarea name="message" placeholder="Message..." onChange={handleChange}></textarea>
+        <label htmlFor="recipient">Recipient:</label>
+        <input type="text" name="recipient" placeholder="Name" onChange={handleChange}></input>
+        <label htmlFor="message">Message:</label>
+        <textarea name="message" placeholder="Dear..." onChange={handleChange}></textarea>
         <button type="submit">Send</button>
       </form>
     </>

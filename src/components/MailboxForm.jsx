@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const initState = {
   _id: 0,
   boxholder: "",
-  boxsize: "Small",
+  boxsize: "",
 };
 
 export default function MailboxForm(props) {
@@ -27,10 +27,11 @@ export default function MailboxForm(props) {
     <>
       <h1>New Mailbox</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="boxholder">Enter a name:</label>
-        <input id="boxholder" name="boxholder" placeholder="Boxholder name" onChange={handleChange}></input>
+        <label htmlFor="boxholder">Boxholder:</label>
+        <input id="boxholder" name="boxholder" placeholder="Name" onChange={handleChange}></input>
         <label htmlFor="boxsize">Select a box size:</label>
         <select onChange={handleChange} name="boxsize" id="boxsize">
+          <option></option>
           <option>Small</option>
           <option>Medium</option>
           <option>Large</option>

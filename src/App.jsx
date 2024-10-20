@@ -16,7 +16,6 @@ export default function App() {
   const addBox = (newBox) => {
     newBox._id = mailboxes.length + 1;
     setMailboxes([...mailboxes, newBox]);
-    console.log(mailboxes);
   };
 
   const addLetter = (newLetter) => {
@@ -37,9 +36,9 @@ export default function App() {
         />
         <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes} />} />
         <Route path="/new-mailbox" element={<MailboxForm addBox={addBox} />} />
-        <Route path="/mailboxes/:mailboxId" element={<MailboxDetails mailboxes={mailboxes} />} />
-        <Route path="/*" element={<h2>Resource not found.</h2>} />
-        <Route path="/new-letter" element={<LetterForm addLetter={addLetter} />} />
+        <Route path="/mailboxes/:mailboxId" element={<MailboxDetails mailboxes={mailboxes} letters={letters} />} />
+        <Route path="/*" element={<h1>Resource not found.</h1>} />
+        <Route path="/new-letter" element={<LetterForm addLetter={addLetter} mailboxes={mailboxes} />} />
       </Routes>
     </>
   );
