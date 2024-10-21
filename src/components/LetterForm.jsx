@@ -9,18 +9,18 @@ const initState = {
 };
 
 export default function LetterForm(props) {
-  const [formData, setFormData] = useState(initState);
+  const [letterContent, setLetterContent] = useState(initState);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.addLetter(formData);
-    setFormData(initState);
+    props.addLetter(letterContent);
+    setLetterContent(initState);
     navigate("/mailboxes");
   };
 
   const handleChange = ({ target }) => {
-    setFormData({ ...formData, [target.name]: target.value });
+    setLetterContent({ ...letterContent, [target.name]: target.value });
   };
 
   return (
@@ -31,7 +31,7 @@ export default function LetterForm(props) {
         <select onChange={handleChange} name="mailboxId" id="mailboxId">
           <option></option>
           {props.mailboxes.map((mailbox) => {
-            return <option key={mailbox._id}>{mailbox._id}</option>;
+            return <option key={mailbox._id}>{mailbox.boxholder}</option>;
           })}
         </select>
         <label htmlFor="recipient">Recipient:</label>

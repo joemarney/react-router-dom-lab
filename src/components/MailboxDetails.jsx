@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 export default function MailboxDetails(props) {
   const { mailboxId } = useParams();
   const singleBox = props.mailboxes.find((mailbox) => mailbox._id === Number(mailboxId));
-  const showLetters = props.letters.filter((letter) => letter.mailboxId === Number(mailboxId));
+  const showLetters = props.letters.filter((letter) => letter.mailboxId === props.mailboxes.boxholder);
   console.log(showLetters);
   console.log(props.mailboxes._id);
   return (
@@ -22,7 +22,12 @@ export default function MailboxDetails(props) {
         <h2>Letters</h2>
         {/* <p>{showLetters}</p> */}
         {showLetters.map((letter) => {
-          return <p key={letter.mailboxId}>{letter.message}</p>;
+          return (
+            <p key={letter.mailboxId}>
+              {letter.message}
+              <h3>test</h3>
+            </p>
+          );
         })}
         {props.letters.map((letter) => {
           return (

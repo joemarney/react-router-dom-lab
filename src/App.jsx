@@ -20,6 +20,8 @@ export default function App() {
 
   const addLetter = (newLetter) => {
     setLetters([...letters, newLetter]);
+    console.log(newLetter);
+    console.log(letters);
   };
 
   return (
